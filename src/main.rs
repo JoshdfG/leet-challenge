@@ -18,6 +18,35 @@ fn main() {
     let cat = "cat";
     let reversed1 = reverse_alternate(cat);
     println!("{} spelt backwards is {}", cat, reversed1);
+
+    let sars = " // Comment here
+    Hello
+    /*
+    Another Comment
+    *point
+    *******/
+    World";
+
+    let mut result = String::new();
+
+    let mut count = 0;
+
+    for (i, sar) in sars.lines().enumerate() {
+        if sar.trim().starts_with("//") {
+        } else if sar.trim().starts_with("/*") {
+            count += 1;
+        } else if sar.trim().ends_with("*/") {
+            count -= 1;
+        } else {
+            if count == 0 {
+                result.push_str(sar.trim());
+                if i != sars.lines().collect::<Vec<_>>().len() - 1 {
+                    result.push(' ')
+                }
+            }
+        }
+    }
+    println!("{}!", result);
 }
 
 // index method not really clear tho
